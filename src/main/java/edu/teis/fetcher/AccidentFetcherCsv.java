@@ -16,13 +16,17 @@ public class AccidentFetcherCsv implements AccidentFetcher {
 
         return Files.lines(file.toPath())
                 .skip(1)
-                .map() //replace casos de ; .
+                .map(line -> line.replace("; ", " - ").split(";")) //replace casos de ; .
+                .map(this::createAccident)
+                .toList();
 
 
 
     }
 
-    private Accident createAccident (
+    private Accident createAccident (String[] accidentRawData){
+        return new Accident();
+    }
 
-    )
+
 }
