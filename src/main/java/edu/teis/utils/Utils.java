@@ -3,6 +3,7 @@ package edu.teis.utils;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Utils {
@@ -12,7 +13,7 @@ public class Utils {
     }
 
     public static LocalTime stringToTime(String time) throws ParseException {
-        // LocalTime.parse() ?????
-        return ;
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        return LocalTime.parse(time, formatter);
     }
 }
