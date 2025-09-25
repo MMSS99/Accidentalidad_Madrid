@@ -4,6 +4,8 @@ import edu.teis.utils.Utils;
 
 import java.text.ParseException;
 import java.time.LocalTime;
+import java.time.Month;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.Optional;
 
@@ -70,6 +72,18 @@ public class Accident {
 
     public String getNum_expedient() {
         return num_expedient;
+    }
+
+    public String getPerson_gender(){
+        return person_gender;
+    }
+
+    public Month getMonth_fromdate(){
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().getMonth();
+    }
+
+    public String getAccident_type() {
+        return accident_type;
     }
 
     public Boolean getAlcohol() {
