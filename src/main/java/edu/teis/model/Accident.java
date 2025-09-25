@@ -68,6 +68,10 @@ public class Accident {
         this.drugs = !drugs.isEmpty();
     }
 
+    public String getNum_expedient() {
+        return num_expedient;
+    }
+
     public Boolean getAlcohol() {
         return alcohol;
     }
@@ -76,5 +80,8 @@ public class Accident {
         return drugs;
     }
 
-
+    @Override
+    public String toString() {
+        return new StringBuilder().append("Accidente ").append(getNum_expedient()).toString();
+    }
 }

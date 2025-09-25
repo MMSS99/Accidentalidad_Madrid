@@ -6,6 +6,7 @@ import edu.teis.storage.AccidentStorageImpl;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,9 +23,15 @@ public class Main {
 
         System.out.println("Cargando accidentes con alcohol o drogas involucrados...");
         //Podría mostrarlos, pero seguramente sean una barbaridad de ellos.
-        System.out.println(
-                accidentStorage.getAccidentList().stream().filter(Accident::getAlcohol).filter(Accident::getDrugs).count()
-        );
+            accidentStorage.getAccidentList()
+                    .stream()
+                    .filter(Accident::getAlcohol)
+                    .filter(Accident::getDrugs)
+                    .collect(Collectors.groupingBy(Accident::getNum_expedient))
+                    .forEach((k, v) -> {
+                        System.out.println(v);
+                    });
 
+        System.out.println("\n Cargando número de accidentes agrupados por sexo: ");
     }
 }
