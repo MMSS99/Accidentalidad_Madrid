@@ -13,6 +13,7 @@ public class Utils {
     }
 
     public static LocalTime stringToTime(String time) throws ParseException {
+        time = time.length() == 7 ? "0" + time : time;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         return LocalTime.parse(time, formatter);
     }
