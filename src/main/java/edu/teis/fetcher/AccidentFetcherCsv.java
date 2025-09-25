@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.text.ParseException;
+import java.util.Arrays;
 import java.util.List;
 
 public class AccidentFetcherCsv implements AccidentFetcher {
@@ -19,7 +20,7 @@ public class AccidentFetcherCsv implements AccidentFetcher {
 
         return Files.lines(file.toPath())
                 .skip(1)
-                .map(line -> line.replace("; ", " - ").split(";")) //replace casos de ; .
+                .map(line -> line.replace("; ", " - ").split(";", -1)) //replace casos de ; .
                 .map(rawData -> { try {return createAccident(rawData); } catch (ParseException e) {e.printStackTrace(); return null; }})
                 .toList();
 
