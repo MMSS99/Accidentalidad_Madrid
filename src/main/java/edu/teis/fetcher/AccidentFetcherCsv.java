@@ -10,6 +10,8 @@ import java.text.ParseException;
 import java.util.List;
 
 public class AccidentFetcherCsv implements AccidentFetcher {
+
+    @Override
     public List<Accident> readFromFile(File file) throws IOException{
         if (!file.isFile() || !file.canRead()) {
             throw new IllegalArgumentException("The given CSV file is not a file or is nto readable.");
