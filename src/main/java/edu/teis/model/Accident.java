@@ -44,7 +44,7 @@ public class Accident {
                     String harm_code,
                     String harm,
                     String coords_x,
-                    String coords_Y,
+                    String coords_y,
                     String alcohol,
                     String drugs) throws ParseException {
         this.num_expedient = num_expedient;
@@ -60,15 +60,21 @@ public class Accident {
         this.person_type = person_type;
         this.person_agerange = person_agerange;
         this.person_gender = person_gender;
-        this.harm_code = harm_code.isEmpty() ? Optional.empty() : Optional.of(Integer.parseInt(harm));
+        this.harm_code = harm_code.isEmpty() ? Optional.empty() : Optional.of(Integer.parseInt(harm_code));
         this.harm = harm.isEmpty() ? Optional.empty() : Optional.of(harm);
-        this.coords_x = Long.parseLong(coords_x);
-        this.coords_y = Long.parseLong(coords_Y);
+        this.coords_x = coords_x.isEmpty() ? 0 : Long.parseLong(coords_x);
+        this.coords_y = coords_y.isEmpty() ? 0 : Long.parseLong(coords_y);
         this.alcohol = !alcohol.isEmpty() && !alcohol.equals("N");
         this.drugs = !drugs.isEmpty();
     }
 
+    public Boolean getAlcohol() {
+        return alcohol;
+    }
 
+    public Boolean getDrugs() {
+        return drugs;
+    }
 
 
 }
