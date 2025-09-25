@@ -14,8 +14,12 @@ public class AccidentStorageImpl implements AccidentStorage {
     private List<Accident> accidentList;
 
     @Override
-    public List<Accident> getAccidentList(File file) throws IOException {
+    public void loadAccidents(File file) throws IOException {
         accidentList = accidentList.isEmpty() ? fetcher.readFromFile(file) : accidentList;
+    }
+
+    @Override
+    public List<Accident> getAccidentList() {
         return accidentList;
     }
 }
