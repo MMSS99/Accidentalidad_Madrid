@@ -8,11 +8,12 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-public class AccidentStorageImpl {
+public class AccidentStorageImpl implements AccidentStorage {
 
     private AccidentFetcher fetcher = new AccidentFetcherCsv();
     private List<Accident> accidentList;
 
+    @Override
     public List<Accident> getAccidentList(File file) throws IOException {
         accidentList = accidentList.isEmpty() ? fetcher.readFromFile(file) : accidentList;
         return accidentList;
