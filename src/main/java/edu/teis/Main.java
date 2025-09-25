@@ -1,5 +1,6 @@
 package edu.teis;
 
+import edu.teis.model.Accident;
 import edu.teis.storage.AccidentStorage;
 import edu.teis.storage.AccidentStorageImpl;
 
@@ -19,6 +20,11 @@ public class Main {
             io.printStackTrace();
         }
 
+        System.out.println("Cargando accidentes con alcohol o drogas involucrados...");
+        //Podría mostrarlos, pero seguramente sean una barbaridad de ellos.
+        System.out.println(
+                accidentStorage.getAccidentList().stream().filter(Accident::getAlcohol).filter(Accident::getDrugs).count()
+        );
 
     }
 }
